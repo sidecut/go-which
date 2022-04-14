@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func deduplicate[T comparable](items []T) []T {
 	usedMap := make(map[T]interface{})
 	copy := []T{}
@@ -15,7 +13,7 @@ func deduplicate[T comparable](items []T) []T {
 	}
 
 	// TEMP
-	fmt.Printf("%v\n", usedMap)
+	// fmt.Printf("%v\n", usedMap)
 
 	return copy
 }
