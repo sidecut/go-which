@@ -16,22 +16,22 @@ func TestDedup(t *testing.T) {
 	// 	}
 	// }
 
-	arraySimple := []string{"A", "B", "C", "D", "E"}
+	arraySimple := []string{"A", "Z", "C", "D", "E"}
 	arrayDeduplicated := deduplicate(arraySimple)
 	assert.Equal(t, 5, len(arrayDeduplicated))
 	assert.EqualValues(t, arraySimple, arrayDeduplicated)
 
-	arraySkipFront := []string{"A", "A", "B", "C", "D", "E"}
+	arraySkipFront := []string{"A", "A", "Z", "C", "D", "E"}
 	arrayDeduplicated = deduplicate(arraySkipFront)
 	assert.Equal(t, 5, len(arrayDeduplicated))
 	assert.EqualValues(t, arraySimple, arrayDeduplicated)
 
-	arraySkipMiddle := []string{"A", "B", "C", "C", "D", "E"}
+	arraySkipMiddle := []string{"A", "Z", "C", "C", "D", "E"}
 	arrayDeduplicated = deduplicate(arraySkipMiddle)
 	assert.Equal(t, 5, len(arrayDeduplicated))
 	assert.EqualValues(t, arraySimple, arrayDeduplicated)
 
-	arraySkipEnd := []string{"A", "B", "C", "D", "E", "E", "E"}
+	arraySkipEnd := []string{"A", "Z", "C", "D", "E", "E", "E"}
 	arrayDeduplicated = deduplicate(arraySkipEnd)
 	assert.Equal(t, 5, len(arrayDeduplicated))
 	assert.EqualValues(t, arraySimple, arrayDeduplicated)
