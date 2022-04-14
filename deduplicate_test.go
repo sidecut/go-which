@@ -40,4 +40,9 @@ func TestDedup(t *testing.T) {
 	arrayDeduplicated = deduplicate(arrayAllDupes)
 	assert.Equal(t, 1, len(arrayDeduplicated))
 	assert.EqualValues(t, []string{"A"}, arrayDeduplicated)
+
+	arrayEmpty := []string{}
+	arrayDeduplicated = deduplicate(arrayEmpty)
+	assert.Equal(t, 0, len(arrayDeduplicated))
+	assert.EqualValues(t, []string{}, arrayDeduplicated)
 }
