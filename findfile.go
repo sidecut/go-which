@@ -6,7 +6,7 @@ import (
 	"path"
 )
 
-func findFile(pathDirs []string, filename string) {
+func findFile(pathDirs []string, filename string) (foundIt bool) {
 	for _, pathDir := range pathDirs {
 		fullPath := path.Join(pathDir, filename)
 		fileInfo, err := os.Stat(fullPath)
@@ -19,8 +19,11 @@ func findFile(pathDirs []string, filename string) {
 			if mode := fileInfo.Mode(); mode.IsRegular() {
 				if mode&0111 != 0 {
 					fmt.Println(fullPath)
+					foundIt = true
 				}
 			}
 		}
 	}
+
+	return
 }
