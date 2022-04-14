@@ -13,7 +13,7 @@ func findFile(pathDirs []string, filename string) {
 		if err != nil {
 			if err.(*os.PathError) == nil {
 				// it's not a bad path
-				fmt.Println(err.Error())
+				fmt.Fprintln(os.Stderr, err.Error())
 			}
 		} else {
 			if mode := fileInfo.Mode(); mode.IsRegular() {
